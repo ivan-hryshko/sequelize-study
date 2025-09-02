@@ -1,5 +1,6 @@
 {
     "scripts": {
+        "start": "cross-env NODE_ENV=development node src/index.js",
         "dev": "cross-env NODE_ENV=development nodemon src/index.js",
         "migrate": "npx sequelize-cli db:migrate"
     },

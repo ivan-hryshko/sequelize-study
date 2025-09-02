@@ -1,16 +1,6 @@
-const { Sequelize } = require('sequelize');
-console.log('process.env :>> ', process.env);
-const { 
-  MYSQL_DATABASE,
-  MYSQL_USER,
-  MYSQL_ROOT_HOST,
-  MYSQL_ROOT_PASSWORD,
-} = require('./config/envs')
-// Create sequelize instance
-const sequelize = new Sequelize(MYSQL_DATABASE, MYSQL_USER, MYSQL_ROOT_PASSWORD, {
-  host: 'localhost',
-  dialect: 'mysql'
-});
+const db = require('../models'); // ✅ no ()
+const { User, Post, Comment, sequelize } = db;
+
 
 // Test the connection
 (async () => {
@@ -20,6 +10,8 @@ const sequelize = new Sequelize(MYSQL_DATABASE, MYSQL_USER, MYSQL_ROOT_PASSWORD,
   } catch (error) {
     console.error('❌ Unable to connect:', error);
   }
+  const user = await User.create({ name: 'Alice', email: 'alice@example.com' });
+
 })();
 
 module.exports = sequelize;
