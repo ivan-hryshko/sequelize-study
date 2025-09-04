@@ -8,7 +8,7 @@ const { appStart } = require('./app');
 async function start(params) {
   try {
     await sequelize.authenticate();
-    await sequelize.sync({ force: true });
+    // await sequelize.sync({ force: true });
     console.log('✅ Connected to MySQL via Sequelize!');
   } catch (error) {
     console.error('❌ Unable to connect:', error);
