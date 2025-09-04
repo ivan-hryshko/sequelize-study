@@ -3,6 +3,7 @@ version: '3.8'
 services:
   db:
     image: mysql:latest
+    # pull_policy: never
     restart: always
     ports:
       - "3306:3306"
