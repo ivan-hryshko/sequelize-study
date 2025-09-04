@@ -1,6 +1,6 @@
 const { Op } = require('sequelize');
 const db = require('../models'); // ✅ no ()
-const { User, Post, Comment } = db;
+const { User, Post, Comment, PostImage } = db;
 
 async function appStart() {
     console.log('Start App');
@@ -17,6 +17,9 @@ async function appStart() {
         where: { title: { [Op.like]: '%Hello%' } },
         include: [User, Comment]
     });
+
+    const image = await PostImage.create({ url: 'https://some', postId: post.id })
+    console.log('image :>> ', image.dataValues);
 
   console.log(JSON.stringify(posts, null, 2));
 }   
